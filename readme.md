@@ -1,5 +1,7 @@
 # Promise returns and Async/await
 
+> The learning objectives are links to anchors within this lesson plan that try to execute the learning objective. Additionally reference links are peppered throughout the headers and content of this lesson plan that contain information pertinent to the where the link is being used.
+
 ## Learning Objectives
 - [Define a promise](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
 - [Leverage `.then` to handle successful async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
