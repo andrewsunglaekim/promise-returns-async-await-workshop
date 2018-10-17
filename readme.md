@@ -1,7 +1,7 @@
 # Promise returns and Async/await
 
 ## Learning Objectives
-- Define a promise.
+- [Define a promise](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1-a-simple-promise-35)
 - Leverage `.then` to handle successful async functionality
 - Leverage `.catch` to handle unsuccessful async functionality
 - Pass returned values to chained promises
