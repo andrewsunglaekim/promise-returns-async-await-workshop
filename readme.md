@@ -6,7 +6,7 @@
 - [Leverage `.catch` to handle unsuccessful async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
 - [Leverage `.finally` to handle any async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
 - [Pass returned values to chained promises](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-2---return-values-in-promises-530)
-- [Use `Promise.all` to handle multiple async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-3---promiseall-550)
+- [Use `Promise.all` to handle multiple async functionalities](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-3---promiseall-550)
 - [Use promise chaining to nest async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#nesting-promises-1060)
 - [Identify when you would choose `Promise.all` or promise chaining](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#nesting-promises-1060)
 - [Leverage async/await as syntactic sugar for promises to clean up promise chains](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#asyncawait-1080)
