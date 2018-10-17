@@ -2,13 +2,13 @@
 
 ## Learning Objectives
 - [Define a promise](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
-- Leverage `.then` to handle successful async functionality
-- Leverage `.catch` to handle unsuccessful async functionality
-- Pass returned values to chained promises
-- Use `Promise.all` to handle multiple async functionality
-- Use promise chaining to nest async functionality
-- Identify when you would choose `Promise.all` or promise chaining
-- Leverage async/await as syntactic sugar for promises to clean up promise chains.
+- [Leverage `.then` to handle successful async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
+- [Leverage `.catch` to handle unsuccessful async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
+- [Pass returned values to chained promises](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-2---return-values-in-promises-530)
+- [Use `Promise.all` to handle multiple async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-3---promiseall-550)
+- [Use promise chaining to nest async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#nesting-promises-1060)
+- [Identify when you would choose `Promise.all` or promise chaining](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#nesting-promises-1060)
+- [Leverage async/await as syntactic sugar for promises to clean up promise chains](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#asyncawait-1080)
 
 
 ## Framing (2/2)
@@ -70,7 +70,7 @@ We as developers are never sure how long our api fetches can take. We just send 
 
 
 
-## axios
+## [axios](https://github.com/axios/axios)
 Axios has kind of become the defacto standard for HTTP requests in the browser and node. We'll be using axios to do simple get requests. The libraries we use in this workshop are kind of irrelevant, the important thing to note is  how promises are leveraged to handle the asynchronous behavior. Axios abstracts the executor functions away from us, and allows us to interact with it methods by making them return promises.
 
 > For the purposes of this workshop, we'll just be using simple `get` requests with axios to highlight return values within promises.
@@ -130,7 +130,7 @@ const promise = axios.get('http://www.mapquestapi.com/geocoding/v1/address?key=<
   });
 ```
 
-## Discussion 2 - return values in promises (5/30)
+## [Discussion 2 - return values in promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#Return_value) (5/30)
 
 Look at the following code and discuss the following in your group. Assuming the request is successful, what will be logged in the second `then`:
 
@@ -175,9 +175,9 @@ promise.then((res) => {
 
 > We should note here that anything could have been returned the first `then`. Often times an initial then is used to aggregate or make objects based off part of the response. Most importantly though, subsequent `then`s' parameters will always leverage whatever value was returned in the `then` before it.
 
-### Exercise 1 (10/45)
+### [Exercise 1](https://github.com/andrewsunglaekim/promise-returns-async-await-ex) (10/45)
 
-## Discussion 3 - Promise.all() (5/50)
+## [Discussion 3 - Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) (5/50)
 
 Often times when developing, we will need to make several api calls. Sometimes, we need to make these calls all at once but want to do something once everything has been returned. Enter, `Promise.all()`.
 
@@ -198,7 +198,7 @@ Promise.all([rvPromise, charlottePromise]).then((responses) => {
 </details>
 
 
-### Nesting promises (10/60)
+### [Nesting promises](https://javascript.info/promise-chaining) (10/60)
 
 With `Promise.all` we generally know all the information up front to make all the calls. We just want to make sure our `then` happens after they all return.
 
@@ -253,7 +253,7 @@ function reverseGeoFetch(latLng) {
 }
 ```
 
-### Exercise 2 (10/70)
+### [Exercise 2](https://github.com/andrewsunglaekim/promise-returns-async-await-ex) (10/70)
 
 ## `async/await` (10/80)
 
@@ -292,4 +292,4 @@ In the execution of an `async` function the `await` allows lines after it to onl
 
 The reality is that it doesn't condense too many lines of code. The increase in readability, however, is great.
 
-### Exercise 3 (10/90)
+### [Exercise 3](https://github.com/andrewsunglaekim/promise-returns-async-await-ex) (10/90)
