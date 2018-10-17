@@ -4,6 +4,7 @@
 - [Define a promise](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
 - [Leverage `.then` to handle successful async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
 - [Leverage `.catch` to handle unsuccessful async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
+- [Leverage `.finally` to handle any async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-1---a-simple-promise-35)
 - [Pass returned values to chained promises](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-2---return-values-in-promises-530)
 - [Use `Promise.all` to handle multiple async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#discussion-3---promiseall-550)
 - [Use promise chaining to nest async functionality](https://github.com/andrewsunglaekim/promise-returns-async-await-workshop#nesting-promises-1060)
@@ -23,7 +24,7 @@ Examine the following code for 1 minute:
 
 ```js
 const p = new Promise((resolve, reject) => {
-  const randomRoll = Math.random()
+  const randomRoll = Math.random();
   if (randomRoll > 0.5) {
     resolve('This is the resolved value');
   } else {
@@ -145,7 +146,7 @@ const promise = axios.get('http://www.mapquestapi.com/geocoding/v1/address?key=<
 
 promise.then((res) => {
   console.log(res);
-})
+});
 ```
 
 <details>
@@ -189,7 +190,7 @@ const charlottePromise = axios.get('http://www.mapquestapi.com/geocoding/v1/addr
 
 Promise.all([rvPromise, charlottePromise]).then((responses) => {
   console.log(responses);
-})
+});
 ```
 
 <details>
@@ -218,29 +219,29 @@ axios.get('http://www.mapquestapi.com/geocoding/v1/address?key=<api-key-here>&lo
     axios.get(`http://www.mapquestapi.com/geocoding/v1/reverse?key=<api-key-here>&location=${latLng.lat},${latLng.lng}`)
       .then((reverseRes) => {
         console.log(reverseRes);
-      })
+      });
   });
 ```
 
 An alternate and probably better way to write the above:
 
 ```js
-getLatLng('redventures').then((latLng)=>{
+getLatLng('redventures').then((latLng) => {
   reverseGeoFetch(latLng).then((res) => {
     console.log(res);
-  })
-})
+  });
+});
 
 function getLatLng(location){
   const latLngPromise = axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=<api-key-here>&location=${location}`)
     .then((res) => {
       console.log(res);
       const latLng = res.data.results[0].locations[0].latLng;
-      return latLng
+      return latLng;
     })
     .catch((err) => {
       console.log(err);
-    })
+    });
   return latLngPromise;  
 }
 
@@ -286,9 +287,9 @@ async function reverseGeoFetch(latLng) {
 }
 ```
 
-The `async` keyword is used to denote functions that will contain asynchronous functionality. In order for something to be `await`'ed. It must be contained within an `async` functions scope.
+The `async` keyword is used to denote functions that will contain asynchronous functionality. In order for something to be `await`'ed. It must be contained within an `async` functions' scope.
 
-In the execution of an `async` function the `await` allows lines after it to only execute until after the functionality to the right of the `await` is finished. Essentially forcing promises and asynch behavior to appear as synchronous code.
+In the execution of an `async` function the `await` allows lines after it to only execute until after the functionality to the right of the `await` is finished. Essentially forcing promises and async behavior to appear as synchronous code.
 
 The reality is that it doesn't condense too many lines of code. The increase in readability, however, is great.
 
