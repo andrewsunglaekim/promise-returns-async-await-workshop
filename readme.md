@@ -11,11 +11,11 @@
 - Leverage async/await as syntactic sugar for promises to clean up promise chains.
 
 
-## Framing
+## Framing (2/2)
 
 As developers, we implement/debug lots of asynchronous code. Often times the challenges we face has more to do with data returns then the asynchronicity it self. This workshop is designed to help understand return values in async programming.
 
-## Discussion 1 - A simple promise
+## [Discussion 1 - A simple promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) (3/5)
 
 As per the MDN docs, [a promise is a returned object to which you attach callbacks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
 
@@ -47,7 +47,7 @@ Spend 2 minutes discussing the following:
   Everything is basically what we expect it to be. Whatever is passed to `resolve` and `reject` is handled respectively in `then` and `catch`. `finally`, however, will always result in an undefined parameter because you want this to happen either way regardless of success or failure.
 </details>
 
-## [Executor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Syntax)
+## [Executor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Syntax)(5/10)
 
 The executor function of a new promise is executed immediately by the Promise implementation. The executor is called before the Promise constructor even returns the created object.
 
@@ -61,7 +61,7 @@ More often then not, we don't really write many executor functions in our actual
 
 > Lookin at the above code,  with the use of the `new` keyword, we can clearly see that `Promise` is a constructor function. Which means `const p` is a new instance of a `Promise` object. Libraries we use just kind of do this out of the box
 
-### Promise objects and schroedinger's callback
+### Promise objects and schroedinger's callback (5/15)
 Schrödinger's cat. It is a thought experiment to understand a paradox of not being able to qualify something because of the act of qualifying it. Similarly, we don't really know what the promise object is going to return until the asynchronous operation has finished.
 
 The promise object represents the eventual completion(or failure) of an asynchronous operation, and its resulting value. In our case, our "eventual completions(or failure)" is happening synchronously through our executor(a simple `Math.random() > 0.5`), but in most cases the `resolve` and `reject` functions are called after asynchronous behavior executes. The executor function in all cases of a new promise object prescribes what causes a resolution or rejection through `resolve` and `reject`.
@@ -75,7 +75,7 @@ Axios has kind of become the defacto standard for HTTP requests in the browser a
 
 > For the purposes of this workshop, we'll just be using simple `get` requests with axios to highlight return values within promises.
 
-## Returning a get response from axios
+## Returning a get response from axios (10/25)
 
 Before getting to heavy into the JS, lets just make a quick api request to the mapquest developer api. Open your browser and enter the following url:
 
@@ -128,7 +128,7 @@ const promise = axios.get('http://www.mapquestapi.com/geocoding/v1/address?key=<
   });
 ```
 
-## Discussion 2 - return values in promises
+## Discussion 2 - return values in promises (5/30)
 
 Look at the following code and discuss the following in your group. Assuming the request is successful, what will be logged in the second `then`:
 
@@ -152,7 +152,7 @@ promise.then((res) => {
 </details>
 
 
-### example
+### example (5/35)
 
 Let's say for contrived purposes, we wanted to log the response two different times within two separate `then`'s
 
@@ -173,9 +173,9 @@ promise.then((res) => {
 
 > We should note here that anything could have been returned the first `then`. Often times an initial then is used to aggregate or make objects based off part of the response. Most importantly though, subsequent `then`s' parameters will always leverage whatever value was returned in the `then` before it.
 
-### Exercise 1
+### Exercise 1 (10/45)
 
-## Discussion 3 - Promise.all()
+## Discussion 3 - Promise.all() (5/50)
 
 Often times when developing, we will need to make several api calls. Sometimes, we need to make these calls all at once but want to do something once everything has been returned. Enter, `Promise.all()`.
 
@@ -196,7 +196,7 @@ Promise.all([rvPromise, charlottePromise]).then((responses) => {
 </details>
 
 
-### Nesting promises
+### Nesting promises (10/60)
 
 With `Promise.all` we generally know all the information up front to make all the calls. We just want to make sure our `then` happens after they all return.
 
@@ -239,6 +239,7 @@ function getLatLng(location){
     .catch((err) => {
       console.log(err);
     })
+  return latLngPromise;  
 }
 
 function reverseGeoFetch(latLng) {
@@ -250,9 +251,9 @@ function reverseGeoFetch(latLng) {
 }
 ```
 
-### Exercise 2
+### Exercise 2 (10/70)
 
-## `async/await`
+## `async/await` (10/80)
 
 We are able to build relatively readable code when nesting promises. However, with the introduction of es6 async/await syntax, we can refactor the above even further. Sweet sweet syntactic sugar.
 
@@ -284,3 +285,5 @@ async function reverseGeoFetch(latLng) {
 ```
 
 The reality is that it doesn't condense too many lines of code. The increase in readability, however, is great.
+
+### Exercise 3 (10/90)
