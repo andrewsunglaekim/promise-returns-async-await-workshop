@@ -83,6 +83,8 @@ Before getting to heavy into the JS, lets just make a quick api request to the m
 http://www.mapquestapi.com/geocoding/v1/address?key=<api-key-here>&location=redventures
 ```
 
+You can get your own mapquest api key [here](https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register)
+
 > replace `<api-key-here>` with your api key. In the following code snippets all keys will be represented like it is in the above snippet. Remember to move the greater than and less than signs as well.
 
 We'll see a pretty generic api response with mapquests data on a location query of 'redventures'. Let's see how we can leverage this response inside JS promises.
@@ -283,6 +285,10 @@ async function reverseGeoFetch(latLng) {
   }
 }
 ```
+
+The `async` keyword is used to denote functions that will contain asynchronous functionality. In order for something to be `await`'ed. It must be contained within an `async` functions scope.
+
+In the execution of an `async` function the `await` allows lines after it to only execute until after the functionality to the right of the `await` is finished. Essentially forcing promises and asynch behavior to appear as synchronous code.
 
 The reality is that it doesn't condense too many lines of code. The increase in readability, however, is great.
 
