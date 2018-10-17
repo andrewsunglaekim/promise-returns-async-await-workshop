@@ -80,7 +80,7 @@ Axios has kind of become the defacto standard for HTTP requests in the browser a
 
 ## Returning a get response from axios (10/25)
 
-Before getting to heavy into the JS, lets just make a quick api request to the mapquest developer api. Open your browser and enter the following url:
+Before getting to heavy into the JS, lets just make a quick api request to the [mapquest geocoding api](https://developer.mapquest.com/documentation/geocoding-api/address/get/). Open your browser and enter the following url:
 
 ```
 http://www.mapquestapi.com/geocoding/v1/address?key=<api-key-here>&location=redventures
@@ -221,8 +221,14 @@ axios.get('http://www.mapquestapi.com/geocoding/v1/address?key=<api-key-here>&lo
     axios.get(`http://www.mapquestapi.com/geocoding/v1/reverse?key=<api-key-here>&location=${latLng.lat},${latLng.lng}`)
       .then((reverseRes) => {
         console.log(reverseRes);
+      })
+      .catch((err) =>{
+        console.log(err);
       });
-  });
+  })
+  .catch(err) => {
+    console.log(err);
+  };
 ```
 
 An alternate and probably better way to write the above:
